@@ -3,7 +3,12 @@ En este repositorio se estara realizando las etapas que llevaran a cabo al proye
 
 
 Grupo 7
+
+
 GARCIA LAGUNA JOSAFAT RAFAEL
+
 MONGE MARCHENA EDGAR DANIEL
+
 RUIZ SOTO RICHARD EDUARDO
+
 ZAMORA FONSECA SANTIAGO
