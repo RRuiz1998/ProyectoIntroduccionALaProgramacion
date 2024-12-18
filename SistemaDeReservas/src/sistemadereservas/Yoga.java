@@ -63,7 +63,7 @@ public class Yoga {
             return;
         }
 
-        String mensaje;
+        String mensaje = null;
         if (horario.equals("1") && reservas7pm < maxCupos) {
             reservas[getIndiceReserva()] = usuario.get(0) + " (" + usuario.get(1) + ") - 7pm";
             reservas7pm++;
@@ -84,9 +84,7 @@ public class Yoga {
             listSet8pm.add("8pm");
             list8pm.add(listSet8pm);
 
-        } else {
-            mensaje = "No hay cupos disponibles en el horario seleccionado.";
-        }
+        } 
 
         JOptionPane.showMessageDialog(null, mensaje);
     }
