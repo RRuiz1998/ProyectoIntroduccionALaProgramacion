@@ -57,15 +57,11 @@ class EmployeeInformation {
     //Remueve Empleados del Sistema
     public void removeEmployee(String text) {
         String id = text;
-        for (int i = 0; i < register.size(); i++) {
-            String element = register.get(i).get(1);
-            if (element.equalsIgnoreCase(id)) {
-                JOptionPane.showMessageDialog(null, """
-                                                    Usuario removido de la Base de Datos.
-                                                    
-                                                    Nombre de Empleado: """ + " " + register.get(i).get(0) + "\nID: " + register.get(i).get(1));
-                register.remove(register.get(i));
-                break;
+        
+        for (Vector<String> set : register) {
+            if (set.get(1).equals(id)) {
+                JOptionPane.showMessageDialog(null, "Empleado removido de la Base de Datos.\n\nNombre: "+set.get(0)+"\nID: "+set.get(1));
+                register.remove(set);
             }
         }
     }
