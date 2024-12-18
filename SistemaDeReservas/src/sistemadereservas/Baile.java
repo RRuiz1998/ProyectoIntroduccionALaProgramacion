@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class Baile {
 
-    private final int maxCupos = 30; // Máximo de cupos por horario.
+      private final int maxCupos = 30; // Máximo de cupos por horario.
     private int reservas7pm = 0;
     private int reservas8pm = 0;
     private final String[] reservas = new String[maxCupos * 2]; // Reservas almacenadas.
@@ -63,7 +63,7 @@ public class Baile {
             return;
         }
 
-        String mensaje;
+        String mensaje = null;
         if (horario.equals("1") && reservas7pm < maxCupos) {
             reservas[getIndiceReserva()] = usuario.get(0) + " (" + usuario.get(1) + ") - 7pm";
             reservas7pm++;
@@ -84,9 +84,7 @@ public class Baile {
             listSet8pm.add("8pm");
             list8pm.add(listSet8pm);
 
-        } else {
-            mensaje = "No hay cupos disponibles en el horario seleccionado.";
-        }
+        } 
 
         JOptionPane.showMessageDialog(null, mensaje);
     }
@@ -126,7 +124,6 @@ public class Baile {
             }
         }
         listado.append("\nTotal de reservas:\n").append(reservas7pm).append(" en 7pm\n").append(reservas8pm).append(" en 8pm.");
-//        JOptionPane.showMessageDialog(null, listado.toString());
 
     }
 
