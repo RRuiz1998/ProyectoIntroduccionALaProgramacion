@@ -68,7 +68,6 @@ class EmployeeInformation {
                 break;
             }
         }
-        JOptionPane.showMessageDialog(null, "El no ID introducido no se encuentra en el Sistema");
     }
 
 
