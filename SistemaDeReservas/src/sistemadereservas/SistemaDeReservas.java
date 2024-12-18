@@ -52,8 +52,6 @@ public class SistemaDeReservas {
         panelNorte.setBorder(BorderFactory.createLineBorder(Color.white, 2));
         panelNorte.setLayout(new FlowLayout());
 
-        JLabel icon = new JLabel();
-
         JPanel panelOeste = new JPanel();
         panelOeste.setPreferredSize(new Dimension(170, 200));
         panelOeste.setBackground(new Color(28, 160, 85));
@@ -1228,6 +1226,7 @@ public class SistemaDeReservas {
         });
 
         bInfo.addActionListener((ActionEvent e) -> {
+            
 
             panelOpciones.removeAll();
             panelCentral.removeAll();
@@ -1260,14 +1259,16 @@ public class SistemaDeReservas {
             JButton buttonA = new JButton("Agregar Empleado");
             JButton buttonM = new JButton("Modificar Informacion");
             JButton buttonR = new JButton("Remover Empleado");
+            JButton buttonV = new JButton("Visualizar Empleado");
 
-            JButton[] buttonsMCine = {buttonA, buttonM, buttonR};
+            JButton[] buttonsMCine = {buttonA, buttonM, buttonR, buttonV};
 
             setButtons(buttonsMCine);
 
             panelCSI.add(buttonA);
             panelCSI.add(buttonM);
             panelCSI.add(buttonR);
+            panelCSI.add(buttonV);
 
             panelCS.add(panelCSS, BorderLayout.CENTER);
             panelCS.add(panelCSI, BorderLayout.SOUTH);
@@ -1282,8 +1283,10 @@ public class SistemaDeReservas {
 
             buttonA.addActionListener((ActionEvent e1) -> {
 
-                panelCC.removeAll();
+                firstPanel.setBorder(null);
                 firstPanel.removeAll();
+                
+                firstPanel.setPreferredSize(new Dimension(600, 140));
 
                 JLabel input = new JLabel("Introduzca el nombre del empleado: ");
                 JTextField textFieldName = new JTextField(25);
@@ -1315,8 +1318,10 @@ public class SistemaDeReservas {
 
             buttonM.addActionListener((ActionEvent e2) -> {
 
-                panelCC.removeAll();
+                firstPanel.setBorder(null);
                 firstPanel.removeAll();
+                
+                firstPanel.setPreferredSize(new Dimension(500, 140));
 
                 JLabel input = new JLabel("Ingrese el ID del empleado: ");
                 JTextField textFieldName = new JTextField(25);
@@ -1353,10 +1358,62 @@ public class SistemaDeReservas {
 
             });
 
+            buttonV.addActionListener((var e2) -> {
+
+                firstPanel.removeAll();
+
+                JPanel fourthPanel = new JPanel();
+                fourthPanel.setLayout(new FlowLayout());
+
+                firstPanel.setBorder(BorderFactory.createLineBorder(new Color(139, 69, 19), 5));
+
+                JLabel titleOne = new JLabel("Informacion de Empleados");
+
+                JLabel[] labels = {titleOne};
+
+                for (JLabel label : labels) {
+                    label.setHorizontalAlignment(SwingConstants.CENTER);
+                    label.setVerticalAlignment(SwingConstants.CENTER);
+                    label.setForeground(new Color(139, 0, 0));
+                }
+
+                JLabel[] titles = {titleOne};
+                for (JLabel title : titles) {
+                    title.setPreferredSize(new Dimension(170, 20));
+                }
+
+                String textOne = "";
+
+                for (Vector<String> set : data.register) {
+                    textOne += "ID: " + set.get(1) + " / Nombre: " + set.get(0) + "\n";
+                }
+
+                JLabel labelOne = new JLabel("<html>" + textOne.replace("\n", "<br>") + "<html>");
+
+                JPanel[] panels = {firstPanel};
+                for (JPanel panel : panels) {
+                    panel.setPreferredSize(new Dimension(260, 500));
+                    panel.setBackground(new Color(0, 0, 0, 0));
+                    panelCC.add(panel);
+                }
+
+                firstPanel.add(titleOne);
+                firstPanel.add(labelOne);
+
+                panelCentral.add(panelCC);
+
+                updateWindiow(frame);
+
+            });
+
             buttonR.addActionListener((ActionEvent e3) -> {
 
                 panelCC.removeAll();
+                firstPanel.setBorder(null);
                 firstPanel.removeAll();
+                        
+                firstPanel.setPreferredSize(new Dimension(500, 140));
+
 
                 JLabel input = new JLabel("Ingrese el ID del empleado a remover: ");
                 JTextField textFieldName = new JTextField(25);
@@ -1677,7 +1734,9 @@ public class SistemaDeReservas {
             panelCentral.add(panelCC);
 
             confirmationButton.addActionListener((ActionEvent e2) -> {
-
+                
+                secondPanel.removeAll();
+                thirdPanel.removeAll();
 
                 String textoOne = textFieldOne.getText();
                 String textoTwo = textFieldTwo.getText();
